@@ -85,4 +85,18 @@ test('Delete order with incorrect data should receive code 400', async ({ reques
   console.log('response status:', response.status());
   expect(response.status()).toBe(400);
 });
-
+//Put
+test('Get order with correct id should receive code 200', async ({ request }) => {
+  const response = await request.get('https://backend.tallinn-learning.ee/test-orders/10'
+  );
+  console.log('response status:', response.status());
+  console.log('response body:', await response.json());
+  expect(response.status()).toBe(200)
+})
+test('Get order with incorrect id should receive code 400', async ({ request }) => {
+  const response = await request.get('https://backend.tallinn-learning.ee/test-orders/101010'
+  );
+  console.log('response status:', response.status());
+  console.log('response body:', await response.json());
+  expect(response.status()).toBe(400)
+})
