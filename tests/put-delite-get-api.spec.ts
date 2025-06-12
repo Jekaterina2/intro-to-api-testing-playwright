@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test'
-import { StatusCodes } from 'http-status-codes'
 //Put
 test('Put order with correct data should receive code 200', async ({ request }) => {
   const requestBody = {
