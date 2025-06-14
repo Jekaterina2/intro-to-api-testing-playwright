@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 //Put
-test('Put order with correct data should receive code 200', async ({ request }) => {
+test('Put order request with correct data should receive code 200', async ({ request }) => {
   const requestBody = {
     status: 'OPEN',
     courierId: 0,
@@ -21,7 +21,7 @@ test('Put order with correct data should receive code 200', async ({ request }) 
   console.log('response body:', await response.json());
   expect(response.status()).toBe(200);
 })
-test('Put order with incorrect data lenght should receive code 400', async ({ request }) => {
+test('Put order request with incorrect data lenght should receive code 400', async ({ request }) => {
   const requestBody = {
     status: 'OPEN',
     courierId: 0,
@@ -42,7 +42,7 @@ test('Put order with incorrect data lenght should receive code 400', async ({ re
   console.log('response body:', await response.json());
   expect(response.status()).toBe(400);
 });
-test('Put order with incorrect string should receive code 400', async ({ request }) => {
+test('Put order request with incorrect string should receive code 400', async ({ request }) => {
   const requestBody = {
     status: 'OPEN',
     courierId: 0,
@@ -64,7 +64,7 @@ test('Put order with incorrect string should receive code 400', async ({ request
   expect(response.status()).toBe(400);
 });
 //Delete
-test('Delete order with correct data should receive code 204', async ({ request }) => {
+test('Delete order request with correct data should receive code 204', async ({ request }) => {
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/9', {
     headers: {
       'api_key': '1234567890123456',
@@ -74,7 +74,7 @@ test('Delete order with correct data should receive code 204', async ({ request 
   console.log('response status:', response.status());
   expect(response.status()).toBe(204);
 });
-test('Delete order with incorrect data should receive code 400', async ({ request }) => {
+test('Delete order request with incorrect data should receive code 400', async ({ request }) => {
   const response = await request.delete('https://backend.tallinn-learning.ee/test-orders/101010', {
     headers: {
       'api_key': '1234567890123456',
@@ -84,15 +84,15 @@ test('Delete order with incorrect data should receive code 400', async ({ reques
   console.log('response status:', response.status());
   expect(response.status()).toBe(400);
 });
-//Put
-test('Get order with correct id should receive code 200', async ({ request }) => {
+//GET
+test('Get order request with correct id should receive code 200', async ({ request }) => {
   const response = await request.get('https://backend.tallinn-learning.ee/test-orders/10'
   );
   console.log('response status:', response.status());
   console.log('response body:', await response.json());
   expect(response.status()).toBe(200)
 })
-test('Get order with incorrect id should receive code 400', async ({ request }) => {
+test('Get order request with incorrect id should receive code 400', async ({ request }) => {
   const response = await request.get('https://backend.tallinn-learning.ee/test-orders/101010'
   );
   console.log('response status:', response.status());

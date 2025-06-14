@@ -67,7 +67,7 @@ test('post order with correct data should receive code 200', async ({ request })
   expect(response.status()).toBe(StatusCodes.OK)
 })
 
-test('get order with orderId 0 should receive code 400', async ({ request }) => {
+test('Get order with orderId 0 should receive code 400', async ({ request }) => {
 
   const response = await request.get('https://backend.tallinn-learning.ee/test-orders/0')
 
