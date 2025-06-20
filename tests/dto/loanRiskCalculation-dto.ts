@@ -6,7 +6,14 @@ export class LoanRiskCalculationDto {
   loanAmount: number
   loanPeriod: number
 
-  private constructor(income: number, debt: number, age: number, employed: boolean, loanAmount: number, loanPeriod: number) {
+  private constructor(
+    income: number,
+    debt: number,
+    age: number,
+    employed: boolean,
+    loanAmount: number,
+    loanPeriod: number,
+  ) {
     this.income = income
     this.debt = debt
     this.age = age
@@ -15,7 +22,7 @@ export class LoanRiskCalculationDto {
     this.loanPeriod = loanPeriod
   }
   static CreateLoanRiskCalculationDtoWithEmptyData() {
-    return new LoanRiskCalculationDto( 0, 0, 0, false, 0, 0)
+    return new LoanRiskCalculationDto(0, 0, 0, false, 0, 0)
   }
   static CreateLowLoanRiskCalculationDtoWithCorrectData() {
     return new LoanRiskCalculationDto(10000, 10000, 25, true, 10000, 18)
