@@ -21,7 +21,7 @@ test('Put order request with correct data should receive code 200', async ({ req
   console.log('response body:', await response.json())
   expect(response.status()).toBe(200)
 })
-test('Put order request with incorrect data lenght should receive code 400', async ({
+test('Put order request with incorrect data length should receive code 400', async ({
   request,
 }) => {
   const requestBody = {
