@@ -1,8 +1,8 @@
 import { APIRequestContext } from 'playwright'
-import { LoginDto } from './dto/login-dto'
+import { LoginDto } from './login-dto'
 import { StatusCodes } from 'http-status-codes'
 import { expect } from '@playwright/test'
-import { OrderDto } from './dto/order-dto'
+import { OrderDto } from './order-dto'
 
 const serviceURL = 'https://backend.tallinn-learning.ee/'
 const loginPath = 'login/student'

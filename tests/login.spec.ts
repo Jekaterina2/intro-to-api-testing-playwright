@@ -43,7 +43,9 @@ test.describe('Tallinn delivery API tests', () => {
     expect(responseBody).toBe('')
   })
 
-  test('login fail with correct data and incorrect HTTP method, response code 405', async ({ request }) => {
+  test('login fail with correct data and incorrect HTTP method, response code 405', async ({
+    request,
+  }) => {
     const requestBody = LoginDto.createLoginWithCorrectData()
     console.log('requestBody:', requestBody)
     const response = await request.get(`${serviceURL}${loginPath}`, {
@@ -63,7 +65,7 @@ test.describe('Tallinn delivery API tests', () => {
   test('login fail with correct data and incorrect body', async ({ request }) => {
     const requestBody = {
       wrongUsernameField: 'notEmail', // неправильные ключи
-      wrongPasswordField: '123456'
+      wrongPasswordField: '123456',
     }
     console.log('requestBody:', requestBody)
     const response = await request.post(`${serviceURL}${loginPath}`, {
