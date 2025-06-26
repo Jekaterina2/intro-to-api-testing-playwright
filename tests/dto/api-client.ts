@@ -1,4 +1,4 @@
-import { APIRequestContext } from 'playwright'
+import { APIRequestContext, APIResponse } from 'playwright'
 import { LoginDto } from './login-dto'
 import { StatusCodes } from 'http-status-codes'
 import { expect } from '@playwright/test'
@@ -7,6 +7,7 @@ import { OrderDto } from './order-dto'
 const serviceURL = 'https://backend.tallinn-learning.ee/'
 const loginPath = 'login/student'
 const orderPath = 'orders'
+const deletePath = 'orders'
 
 export class ApiClient {
   static instance: ApiClient
@@ -58,5 +59,18 @@ export class ApiClient {
     console.log(responseBody)
 
     return responseBody.id
+  }
+  async deleteOrder(orderId: number): Promise<APIResponse> {
+    console.log('Delete order...')
+    const response = await this.request.delete(`${serviceURL}${deletePath}/${orderId}`, {
+      headers: {
+        Authorization: `Bearer ${this.jwt}`,
+      },
+    })
+    console.log('Delete response: ', response)
+    const responseBody = await response.json()
+    console.log('Order deleted: ')
+    console.log(responseBody)
+    return response
   }
 }
