@@ -22,6 +22,5 @@ test('Login and unsuccessful delete not existing order with api client', async (
   const orderId = 123456
   console.log('orderId:', orderId)
   const response = await apiClient.deleteOrder(orderId)
-  const responseBody = await response.json()
   expect(response.status()).toBe(StatusCodes.OK)
 })
