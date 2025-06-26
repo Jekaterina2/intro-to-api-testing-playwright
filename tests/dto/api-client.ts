@@ -73,4 +73,17 @@ export class ApiClient {
     console.log(responseBody)
     return response
   }
+  async getOrderById(orderId: number): Promise<APIResponse> {
+    console.log('Get order by id...')
+    const response = await this.request.get(`${serviceURL}${orderPath}/${orderId}`, {
+      headers: {
+        Authorization: `Bearer ${this.jwt}`,
+      },
+    })
+    console.log('Get response: ', response)
+    const responseBody = await response.text()
+    console.log('Order found: ')
+    console.log(responseBody)
+    return response
+  }
 }
